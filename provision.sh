@@ -104,6 +104,75 @@ sudo echo 'server {
 
 }' > /etc/nginx/sites-available/yiishop.com
 
+sudo echo 'server {
+    set $web "/var/www/yiishop/backend/web";
+    set $index "index.php";
+    set $charset "utf-8";
+    set $fcp "unix:/var/run/php/php7.1-fpm.sock";
+
+    listen  80;
+    server_name admin.yiishop.com;
+    root $web;
+
+    charset $charset;
+
+    location / {
+        index  $index;
+        try_files $uri $uri/ /$index?$args;
+    }
+
+    location ~ \.(js|css|png|jpg|gif|swf|ico|pdf)$ {
+        try_files $uri = 404;
+    }
+
+    location ~ \.php {
+        include fastcgi_params;
+
+        fastcgi_split_path_info  ^(.+\.php)(.*)$;
+
+        set $fsn /$index;
+        if (-f $document_root$fastcgi_script_name){
+            set $fsn $fastcgi_script_name;
+        }
+
+        fastcgi_pass   $fcp;
+        fastcgi_buffer_size 128k;
+        fastcgi_buffers 256 16k;
+        fastcgi_busy_buffers_size 256k;
+        fastcgi_temp_file_write_size 256k;
+
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fsn;
+        fastcgi_param  PATH_INFO        $fastcgi_path_info;
+        fastcgi_param  PATH_TRANSLATED  $document_root$fsn;
+    }
+
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+    location /phpmyadmin {
+           root /usr/share/;
+           index index.php index.html index.htm;
+           location ~ ^/phpmyadmin/(.+\.php)$ {
+                   try_files $uri =404;
+                   root /usr/share/;
+                   fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+                   fastcgi_index index.php;
+                   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                   include /etc/nginx/fastcgi_params;
+               }
+           location ~* ^/phpmyadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
+                   root /usr/share/;
+               }
+            }
+
+           location /phpMyAdmin {
+                   rewrite ^/* /phpmyadmin last;
+        }
+
+}' > /etc/nginx/sites-available/admin.yiishop.com
 
 echo 'zend_extension=xdebug.so
 xdebug.remote_autostart=on

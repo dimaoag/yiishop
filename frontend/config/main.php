@@ -41,16 +41,11 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                '' => 'site/index',
-                '<_a:login|logout' => 'site/<_a>'
-            ],
-        ],
-
+        'frontendUrlManager' => require __DIR__ . '/urlManager.php',
+        'backendUrlManager' => require __DIR__ . '/../../backend/config/urlManager.php',
+        'urlManager' => function(){
+            return Yii::$app->get('frontendUrlManager');
+        },
     ],
     'params' => $params,
 ];

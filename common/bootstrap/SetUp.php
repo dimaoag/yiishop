@@ -15,13 +15,10 @@ class SetUp implements BootstrapInterface{
             return $app->mailer;
         });
 
-        $container->setSingleton(PasswordResetService::class, [],[
-            [$app->params['supportEmail'] => $app->name . ' robot'],
-            //MailerInterface::class по дефолту автоматически передается как параметр
-        ]);
+        $container->setSingleton(PasswordResetService::class);
+        //MailerInterface::class по дефолту автоматически передается как параметр
 
         $container->setSingleton(ContactService::class, [],[
-            $app->params['supportEmail'],
             $app->params['adminEmail']
             //MailerInterface::class по дефолту автоматически передается как параметр
         ]);

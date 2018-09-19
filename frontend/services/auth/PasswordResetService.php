@@ -9,13 +9,11 @@ use Yii;
 
 class PasswordResetService
 {
-    private $supportEmail;
     private $mailer;
 
 
-    public function __construct($supportEmail, MailerInterface $mailer)
+    public function __construct(MailerInterface $mailer)
     {
-           $this->supportEmail = $supportEmail;
            $this->mailer = $mailer;
     }
 
@@ -38,7 +36,6 @@ class PasswordResetService
                 ['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'],
                 ['user' => $user]
             )
-            ->setFrom($this->supportEmail)
             ->setTo($form->email)
             ->setSubject('Password reset for ' . 'My Application')
             ->send();

@@ -5,31 +5,32 @@ use common\entities\User;
 use frontend\forms\PasswordResetRequestForm;
 use frontend\forms\ResetPasswordForm;
 use yii\mail\MailerInterface;
+use common\repositories\UserRepository;
 use Yii;
 
 class PasswordResetService
 {
     private $mailer;
+    private $users;
 
 
-    public function __construct(MailerInterface $mailer)
+    public function __construct(UserRepository $users, MailerInterface $mailer)
     {
            $this->mailer = $mailer;
+           $this->users = $users;
     }
 
     public function request(PasswordResetRequestForm $form)
     {
-        $user = User::findOne([
-            'status' => User::STATUS_ACTIVE,
-            'email' => $form->email,
-        ]);
-        if (!$user){
-            throw new \DomainException('User is not found.');
+        $user = $this->users->getUserByEmail($form->email);
+
+        if (!$user->isActive()){
+            throw new \DomainException('User is not active.');
         }
+
         $user->requestPasswordReset();
-        if (!$user->save()){
-            throw new \RuntimeException('Saving error.');
-        }
+        $this->users->save($user);
+
         $send = $this
             ->mailer
             ->compose(
@@ -45,30 +46,24 @@ class PasswordResetService
     }
 
 
-
     public function validateToken($token)
     {
         if (empty($token) || !is_string($token)) {
             throw new \DomainException('Password reset token cannot be blank.');
         }
-        $this->_user = User::findByPasswordResetToken($token);
-        if (!User::findByPasswordResetToken($token)) {
+        if (!$this->users->existByPasswordResetToken($token)) {
             throw new \DomainException('Wrong password reset token.');
         }
     }
 
 
-
     public function reset(string $token, ResetPasswordForm $form)
     {
-        $user = User::findByPasswordResetToken($token);
-        if (!$user){
-            throw new \DomainException('User is not found.');
-        }
+        $user = $this->users->getUserByPasswordResetToken($token);
         $user->resetPassword($form->password);
-        if (!$user->save()){
-            throw new \RuntimeException('Saving error.');
-        }
+        $this->users->save($user);
     }
+
+
 
 }

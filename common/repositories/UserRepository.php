@@ -32,6 +32,11 @@ class UserRepository
         return $this->getUserBy(['email_confirm_token'=> $token]);
     }
 
+    public function findByUsername(string $username): User
+    {
+        return $this->getUserBy(['username'=> $username]);
+    }
+
     private function getUserBy(array $condition): User
     {
         if (!$user = User::find()->andWhere($condition)->limit(1)->one()){

@@ -4,8 +4,8 @@ namespace backend\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use common\forms\LoginForm;
-use common\services\AuthService;
+use shop\forms\auth\LoginForm;
+use shop\services\auth\AuthService;
 
 /**
  * Site controller
@@ -94,7 +94,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 }

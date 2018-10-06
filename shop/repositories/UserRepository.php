@@ -1,7 +1,7 @@
 <?php
 namespace shop\repositories;
 
-use shop\entities\User;
+use shop\entities\user\User;
 
 class UserRepository
 {
@@ -11,6 +11,12 @@ class UserRepository
             throw new \RuntimeException('Saving error.');
         }
     }
+
+    public function findByNetworkIdentity($network, $identity): ?User
+    {
+        return User::find()->joinWith('networks n')->andWhere(['n.network' => $network, 'n.identity' => $identity])->one();
+    }
+
 
     public function existByPasswordResetToken(string $token): bool
     {

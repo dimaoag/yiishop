@@ -3,7 +3,7 @@ namespace shop\forms\auth;
 
 
 use yii\base\Model;
-use shop\entities\User;
+use shop\entities\user\User;
 
 /**
  * Password reset request form

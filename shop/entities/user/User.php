@@ -25,10 +25,11 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ *
+ *  * @property Network[] $networks
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    use InstantiateTrait;
     const STATUS_WAIT = 0;
     const STATUS_ACTIVE = 10;
 
@@ -65,6 +66,17 @@ class User extends ActiveRecord implements IdentityInterface
         return $user;
     }
 
+    public function attachNetwork($network, $identity):void
+    {
+        $networks = $this->networks;
+        foreach ($networks as $current){
+            if ($current->isFor($network, $identity)){
+                throw new \DomainException('Network is already attached.');
+            }
+        }
+        $networks[] = Network::create($network, $identity);
+        $this->networks = $networks;
+    }
 
     public function requestPasswordReset() :void
     {

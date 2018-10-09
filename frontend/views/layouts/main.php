@@ -44,6 +44,7 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Signup', 'url' => ['/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/login']];
     } else {
+        $menuItems[] = ['label' => 'Cabinet', 'url' => ['/cabinet']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/logout'], 'post')
             . Html::submitButton(

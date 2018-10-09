@@ -23,6 +23,11 @@ class UserRepository
         return (bool) User::findByPasswordResetToken($token);
     }
 
+    public function getUserById($id): User
+    {
+        return $this->getUserBy(['id' => $id]);
+    }
+
     public function getUserByEmail(string $email): User
     {
         return $this->getUserBy(['email'=> $email]);

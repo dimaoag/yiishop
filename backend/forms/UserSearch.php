@@ -2,7 +2,6 @@
 
 namespace backend\forms;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use shop\entities\user\User;

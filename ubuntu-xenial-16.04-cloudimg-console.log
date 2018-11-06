@@ -661,3 +661,48 @@ yiishop login: [[0;32m  OK  [0m] Started ACPI event daemon.
 [  OK  ] Started Session 3 of user vagrant.
 [  OK  ] Started User Manager for UID 1000.
 [  OK  ] Started Daily apt upgrade and clean activities.
+[ 3070.447026] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 3070.447026]   Tx Queue             <0>
+[ 3070.447026]   TDH                  <38>
+[ 3070.447026]   TDT                  <3a>
+[ 3070.447026]   next_to_use          <3a>
+[ 3070.447026]   next_to_clean        <38>
+[ 3070.447026] buffer_info[next_to_clean]
+[ 3070.447026]   time_stamp           <1000a8ef6>
+[ 3070.447026]   next_to_watch        <39>
+[ 3070.447026]   jiffies              <1000a90c3>
+[ 3070.447026]   next_to_watch.status <0>
+[ 3072.449373] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 3072.449373]   Tx Queue             <0>
+[ 3072.449373]   TDH                  <38>
+[ 3072.449373]   TDT                  <3a>
+[ 3072.449373]   next_to_use          <3a>
+[ 3072.449373]   next_to_clean        <38>
+[ 3072.449373] buffer_info[next_to_clean]
+[ 3072.449373]   time_stamp           <1000a8ef6>
+[ 3072.449373]   next_to_watch        <39>
+[ 3072.449373]   jiffies              <1000a92b8>
+[ 3072.449373]   next_to_watch.status <0>
+[ 3074.453106] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 3074.453106]   Tx Queue             <0>
+[ 3074.453106]   TDH                  <38>
+[ 3074.453106]   TDT                  <3a>
+[ 3074.453106]   next_to_use          <3a>
+[ 3074.453106]   next_to_clean        <38>
+[ 3074.453106] buffer_info[next_to_clean]
+[ 3074.453106]   time_stamp           <1000a8ef6>
+[ 3074.453106]   next_to_watch        <39>
+[ 3074.453106]   jiffies              <1000a94ad>
+[ 3074.453106]   next_to_watch.status <0>
+[ 3076.466592] e1000 0000:00:03.0 enp0s3: Detected Tx Unit Hang
+[ 3076.466592]   Tx Queue             <0>
+[ 3076.466592]   TDH                  <38>
+[ 3076.466592]   TDT                  <3a>
+[ 3076.466592]   next_to_use          <3a>
+[ 3076.466592]   next_to_clean        <38>
+[ 3076.466592] buffer_info[next_to_clean]
+[ 3076.466592]   time_stamp           <1000a8ef6>
+[ 3076.466592]   next_to_watch        <39>
+[ 3076.466592]   jiffies              <1000a96a4>
+[ 3076.466592]   next_to_watch.status <0>
+[ 3076.591399] e1000 0000:00:03.0 enp0s3: Reset adapter

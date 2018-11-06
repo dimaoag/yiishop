@@ -6,4 +6,5 @@ return [
     'cookieDomain' => '.yiishop.com',
     'backendHostInfo' => 'http://admin.yiishop.com',
     'frontendHostInfo' => 'http://yiishop.com',
+    'rememberMeDuration' => 3600 * 24,
 ];

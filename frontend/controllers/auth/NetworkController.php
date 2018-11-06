@@ -9,7 +9,7 @@ use yii\authclient\ClientInterface;
 use yii\helpers\ArrayHelper;
 use yii\base\Module;
 use yii\web\Controller;
-use shop\services\auth\NetworkService;
+use shop\useCases\auth\NetworkService;
 
 class NetworkController extends Controller
 {

@@ -1,5 +1,6 @@
 <?php
-namespace shop\services\contact;
+
+namespace shop\useCases;
 
 use shop\forms\contact\ContactForm;
 use yii\mail\MailerInterface;
@@ -22,8 +23,9 @@ class ContactService
             ->setSubject($form->subject)
             ->setTextBody($form->body)
             ->send();
-        if (!$sent){
-            throw new \RuntimeException('Sending error!');
+
+        if (!$sent) {
+            throw new \RuntimeException('Sending error.');
         }
     }
 }

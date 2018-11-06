@@ -1,5 +1,5 @@
 <?php
-namespace shop\services\auth;
+namespace shop\useCases\auth;
 
 use shop\entities\user\User;
 use shop\repositories\UserRepository;

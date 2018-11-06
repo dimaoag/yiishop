@@ -1,5 +1,5 @@
 <?php
-namespace shop\services\auth;
+namespace shop\useCases\auth;
 
 use shop\forms\auth\SignupForm;
 use shop\entities\user\User;

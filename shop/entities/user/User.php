@@ -2,7 +2,6 @@
 namespace shop\entities\user;
 
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
-use shop\entities\InstantiateTrait;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\base\Theme;

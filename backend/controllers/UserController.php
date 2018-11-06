@@ -11,7 +11,7 @@ use yii\base\Module;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use shop\services\manage\UserManegeService;
+use shop\useCases\manage\UserManegeService;
 
 
 class UserController extends Controller

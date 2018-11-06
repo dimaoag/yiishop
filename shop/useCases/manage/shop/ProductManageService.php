@@ -3,19 +3,19 @@
 namespace shop\useCases\manage\shop;
 
 use shop\entities\Meta;
-use shop\entities\Shop\Product\Product;
-use shop\entities\Shop\Tag;
-use shop\forms\manage\Shop\Product\QuantityForm;
-use shop\forms\manage\Shop\Product\CategoriesForm;
-use shop\forms\manage\Shop\Product\ModificationForm;
-use shop\forms\manage\Shop\Product\PhotosForm;
-use shop\forms\manage\Shop\Product\PriceForm;
-use shop\forms\manage\Shop\Product\ProductCreateForm;
-use shop\forms\manage\Shop\Product\ProductEditForm;
-use shop\repositories\Shop\BrandRepository;
-use shop\repositories\Shop\CategoryRepository;
-use shop\repositories\Shop\ProductRepository;
-use shop\repositories\Shop\TagRepository;
+use shop\entities\shop\product\Product;
+use shop\entities\shop\Tag;
+use shop\forms\manage\shop\product\QuantityForm;
+use shop\forms\manage\shop\product\CategoriesForm;
+use shop\forms\manage\shop\product\ModificationForm;
+use shop\forms\manage\shop\product\PhotosForm;
+use shop\forms\manage\shop\product\PriceForm;
+use shop\forms\manage\shop\product\ProductCreateForm;
+use shop\forms\manage\shop\product\ProductEditForm;
+use shop\repositories\shop\BrandRepository;
+use shop\repositories\shop\CategoryRepository;
+use shop\repositories\shop\ProductRepository;
+use shop\repositories\shop\TagRepository;
 use shop\services\TransactionManager;
 
 class ProductManageService

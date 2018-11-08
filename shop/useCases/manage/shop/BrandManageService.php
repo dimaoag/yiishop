@@ -3,10 +3,10 @@
 namespace shop\useCases\manage\shop;
 
 use shop\entities\Meta;
-use shop\entities\Shop\Brand;
-use shop\forms\manage\Shop\BrandForm;
-use shop\repositories\Shop\BrandRepository;
-use shop\repositories\Shop\ProductRepository;
+use shop\entities\shop\Brand;
+use shop\forms\manage\shop\BrandForm;
+use shop\repositories\shop\BrandRepository;
+use shop\repositories\shop\ProductRepository;
 
 class BrandManageService
 {

@@ -4,14 +4,14 @@ namespace shop\useCases\shop;
 
 use shop\cart\Cart;
 use shop\cart\CartItem;
-use shop\entities\Shop\Order\CustomerData;
-use shop\entities\Shop\Order\DeliveryData;
-use shop\entities\Shop\Order\Order;
-use shop\entities\Shop\Order\OrderItem;
-use shop\forms\Shop\Order\OrderForm;
-use shop\repositories\Shop\DeliveryMethodRepository;
-use shop\repositories\Shop\OrderRepository;
-use shop\repositories\Shop\ProductRepository;
+use shop\entities\shop\order\CustomerData;
+use shop\entities\shop\order\DeliveryData;
+use shop\entities\shop\order\Order;
+use shop\entities\shop\order\OrderItem;
+use shop\forms\shop\order\OrderForm;
+use shop\repositories\shop\DeliveryMethodRepository;
+use shop\repositories\shop\OrderRepository;
+use shop\repositories\shop\ProductRepository;
 use shop\repositories\UserRepository;
 use shop\services\TransactionManager;
 

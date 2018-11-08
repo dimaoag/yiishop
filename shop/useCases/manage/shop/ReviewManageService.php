@@ -2,8 +2,8 @@
 
 namespace shop\useCases;
 
-use shop\forms\manage\Shop\Product\ReviewEditForm;
-use shop\repositories\Shop\ProductRepository;
+use shop\forms\manage\shop\product\ReviewEditForm;
+use shop\repositories\shop\productRepository;
 
 class ReviewManageService
 {

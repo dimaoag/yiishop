@@ -4,7 +4,7 @@ namespace shop\useCases\shop;
 
 use shop\cart\Cart;
 use shop\cart\CartItem;
-use shop\repositories\Shop\ProductRepository;
+use shop\repositories\shop\ProductRepository;
 
 class CartService
 {

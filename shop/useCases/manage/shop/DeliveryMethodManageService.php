@@ -2,9 +2,9 @@
 
 namespace shop\useCases\manage\shop;
 
-use shop\entities\Shop\DeliveryMethod;
-use shop\forms\manage\Shop\DeliveryMethodForm;
-use shop\repositories\Shop\DeliveryMethodRepository;
+use shop\entities\shop\DeliveryMethod;
+use shop\forms\manage\shop\DeliveryMethodForm;
+use shop\repositories\shop\DeliveryMethodRepository;
 
 class DeliveryMethodManageService
 {

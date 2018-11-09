@@ -34,7 +34,16 @@
                     ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
 //                    ['label' => 'Пользователи', 'icon' => 'user', 'url' => ['/user'], 'active' => Yii::$app->controller->id == 'user'],
-                    ['label' => 'Пользователи', 'icon' => 'user', 'url' => ['/user'], 'active' => $this->context->id == 'user'],
+                    ['label' => 'Users', 'icon' => 'user', 'url' => ['/user'], 'active' => $this->context->id == 'user'],
+                    [
+                        'label' => 'Product',
+                        'icon' => 'shopping-bag',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Бренды', 'icon' => 'star-o', 'url' => ['/shop/brand/index'], 'active' => $this->context->id == 'shop/brand'],
+                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+                        ],
+                    ],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Some tools',

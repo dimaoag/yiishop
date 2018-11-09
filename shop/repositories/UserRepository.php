@@ -12,6 +12,14 @@ class UserRepository
         }
     }
 
+
+    public function remove(User $user): void
+    {
+        if (!$user->delete()) {
+            throw new \RuntimeException('Removing error.');
+        }
+    }
+
     public function findByNetworkIdentity($network, $identity): ?User
     {
         return User::find()->joinWith('networks n')->andWhere(['n.network' => $network, 'n.identity' => $identity])->one();
@@ -55,6 +63,11 @@ class UserRepository
         }
         return $user;
     }
+
+
+
+
+
 
 
 }

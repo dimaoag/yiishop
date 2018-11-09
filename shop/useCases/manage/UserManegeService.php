@@ -38,6 +38,11 @@ class UserManegeService
     }
 
 
+    public function remove($id): void
+    {
+        $user = $this->repository->getUserById($id);
+        $this->repository->remove($user);
+    }
 
 
 

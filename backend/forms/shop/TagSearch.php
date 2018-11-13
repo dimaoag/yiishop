@@ -4,7 +4,7 @@ namespace backend\forms\shop;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use shop\entities\Shop\Tag;
+use shop\entities\shop\Tag;
 
 class TagSearch extends Model
 {

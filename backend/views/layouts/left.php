@@ -36,12 +36,13 @@
 //                    ['label' => 'Пользователи', 'icon' => 'user', 'url' => ['/user'], 'active' => Yii::$app->controller->id == 'user'],
                     ['label' => 'Users', 'icon' => 'user', 'url' => ['/user'], 'active' => $this->context->id == 'user'],
                     [
-                        'label' => 'Product',
+                        'label' => 'Shop',
                         'icon' => 'shopping-bag',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Бренды', 'icon' => 'star-o', 'url' => ['/shop/brand/index'], 'active' => $this->context->id == 'shop/brand'],
-                            ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug'],],
+                            ['label' => 'Brands', 'icon' => 'star-o', 'url' => ['/shop/brand/index'], 'active' => $this->context->id == 'shop/brand'],
+                            ['label' => 'Tags', 'icon' => 'star-o', 'url' => ['/shop/tag/index'], 'active' => $this->context->id == 'shop/tag'],
+
                         ],
                     ],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],

@@ -6,24 +6,24 @@ use shop\dispatchers\DeferredEventDispatcher;
 
 class TransactionManager
 {
-    private $dispatcher;
+//    private $dispatcher;
 
-    public function __construct(DeferredEventDispatcher $dispatcher)
-    {
-        $this->dispatcher = $dispatcher;
-    }
+//    public function __construct(DeferredEventDispatcher $dispatcher)
+//    {
+//        $this->dispatcher = $dispatcher;
+//    }
 
     public function wrap(callable $function): void
     {
         $transaction = \Yii::$app->db->beginTransaction();
         try {
-            $this->dispatcher->defer();
+//            $this->dispatcher->defer();
             $function();
             $transaction->commit();
-            $this->dispatcher->release();
+//            $this->dispatcher->release();
         } catch (\Exception $e) {
             $transaction->rollBack();
-            $this->dispatcher->clean();
+//            $this->dispatcher->clean();
             throw $e;
         }
     }

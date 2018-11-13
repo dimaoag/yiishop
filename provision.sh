@@ -174,6 +174,21 @@ sudo echo 'server {
 
 }' > /etc/nginx/sites-available/admin.yiishop.com
 
+sudo echo 'server {
+    set $web "/var/www/yiishop/static";
+
+    listen  80;
+    server_name static.yiishop.com;
+    root $web;
+   
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+
+}' > /etc/nginx/sites-available/static.yiishop.com
+
 echo 'zend_extension=xdebug.so
 xdebug.remote_autostart=on
 xdebug.remote_enable=on

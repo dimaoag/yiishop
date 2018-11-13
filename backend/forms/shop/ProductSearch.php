@@ -2,11 +2,11 @@
 
 namespace backend\forms\shop;
 
-use shop\entities\Shop\Category;
+use shop\entities\shop\Category;
 use shop\helpers\ProductHelper;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use shop\entities\Shop\Product\Product;
+use shop\entities\shop\product\Product;
 use yii\helpers\ArrayHelper;
 
 class ProductSearch extends Model

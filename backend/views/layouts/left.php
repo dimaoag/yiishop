@@ -43,6 +43,7 @@
                             ['label' => 'Brands', 'icon' => 'star-o', 'url' => ['/shop/brand/index'], 'active' => $this->context->id == 'shop/brand'],
                             ['label' => 'Tags', 'icon' => 'star-o', 'url' => ['/shop/tag/index'], 'active' => $this->context->id == 'shop/tag'],
                             ['label' => 'Categories', 'icon' => 'star-o', 'url' => ['/shop/category/index'], 'active' => $this->context->id == 'shop/category'],
+                            ['label' => 'Characteristics', 'icon' => 'star-o', 'url' => ['/shop/characteristic/index'], 'active' => $this->context->id == 'shop/characteristic'],
 
                         ],
                     ],

@@ -5,7 +5,7 @@ namespace backend\forms\shop;
 use shop\helpers\CharacteristicHelper;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use shop\entities\Shop\Characteristic;
+use shop\entities\shop\Characteristic;
 
 class CharacteristicSearch extends Model
 {

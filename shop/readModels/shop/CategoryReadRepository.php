@@ -74,4 +74,7 @@ class CategoryReadRepository
             return new CategoryView($category, ArrayHelper::getValue($counts, $category->id, 0));
         }, $query->all());
     }
+
+
+
 }

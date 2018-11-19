@@ -11,7 +11,7 @@ use yii\base\Module;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use shop\useCases\manage\UserManegeService;
+use shop\useCases\manage\UserManageService;
 
 
 class UserController extends Controller
@@ -19,7 +19,7 @@ class UserController extends Controller
 
     private $userManegeService;
 
-    public function __construct(string $id, Module $module, UserManegeService $userManegeService, array $config = [])
+    public function __construct(string $id, Module $module, UserManageService $userManegeService, array $config = [])
     {
         parent::__construct($id, $module, $config);
         $this->userManegeService = $userManegeService;

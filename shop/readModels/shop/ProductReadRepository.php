@@ -5,7 +5,7 @@ namespace shop\readModels\shop;
 use Elasticsearch\Client;
 use shop\entities\shop\Brand;
 use shop\entities\shop\Category;
-use shop\entities\shop\Product\Product;
+use shop\entities\shop\product\Product;
 use shop\entities\shop\Tag;
 use shop\forms\shop\search\SearchForm;
 use shop\forms\shop\search\ValueForm;

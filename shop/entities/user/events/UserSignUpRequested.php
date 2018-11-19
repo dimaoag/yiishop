@@ -1,8 +1,8 @@
 <?php
 
-namespace shop\entities\User\events;
+namespace shop\entities\user\events;
 
-use shop\entities\User\User;
+use shop\entities\user\User;
 
 class UserSignUpRequested
 {

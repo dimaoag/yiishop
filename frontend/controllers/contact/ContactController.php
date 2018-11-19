@@ -2,7 +2,7 @@
 namespace frontend\controllers\contact;
 
 use shop\forms\contact\ContactForm;
-use shop\services\contact\ContactService;
+use shop\useCases\ContactService;
 use yii\base\Module;
 use yii\web\Controller;
 use Yii;

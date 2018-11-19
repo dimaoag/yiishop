@@ -1,9 +1,9 @@
 <?php
 
-namespace shop\forms\shop\Search;
+namespace shop\forms\shop\search;
 
-use shop\entities\Shop\Characteristic;
-use shop\entities\Shop\Product\Value;
+use shop\entities\shop\Characteristic;
+use shop\entities\shop\product\Value;
 use yii\base\Model;
 
 /**

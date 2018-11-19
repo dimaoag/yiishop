@@ -6,7 +6,7 @@ use shop\repositories\UserRepository;
 use shop\forms\manage\user\UserCreateForm;
 use shop\forms\manage\user\UserEditForm;
 
-class UserManegeService
+class UserManageService
 {
     private $repository;
 

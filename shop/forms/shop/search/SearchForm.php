@@ -1,10 +1,10 @@
 <?php
 
-namespace shop\forms\shop\Search;
+namespace shop\forms\shop\search;
 
-use shop\entities\Shop\Brand;
-use shop\entities\Shop\Category;
-use shop\entities\Shop\Characteristic;
+use shop\entities\shop\Brand;
+use shop\entities\shop\Category;
+use shop\entities\shop\Characteristic;
 use shop\forms\CompositeForm;
 use yii\helpers\ArrayHelper;
 

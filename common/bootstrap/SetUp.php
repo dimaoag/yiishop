@@ -1,26 +1,143 @@
 <?php
+
 namespace common\bootstrap;
 
-use yii\base\BootstrapInterface;
-use shop\useCases\auth\PasswordResetService;
+use Elasticsearch\Client;
+use Elasticsearch\ClientBuilder;
+use League\Flysystem\Adapter\Ftp;
+use League\Flysystem\Filesystem;
+use shop\cart\Cart;
+use shop\cart\cost\calculator\DynamicCost;
+use shop\cart\cost\calculator\SimpleCost;
+use shop\cart\storage\HybridStorage;
+use shop\dispatchers\AsyncEventDispatcher;
+use shop\dispatchers\DeferredEventDispatcher;
+use shop\dispatchers\EventDispatcher;
+use shop\dispatchers\SimpleEventDispatcher;
+use shop\entities\behaviors\FlySystemImageUploadBehavior;
+use shop\entities\shop\product\events\ProductAppearedInStock;
+use shop\jobs\AsyncEventJobHandler;
+use shop\listeners\shop\category\CategoryPersistenceListener;
+use shop\listeners\shop\product\ProductAppearedInStockListener;
+use shop\listeners\shop\product\ProductSearchPersistListener;
+use shop\listeners\shop\product\ProductSearchRemoveListener;
+use shop\listeners\user\UserSignupConfirmedListener;
+use shop\listeners\user\UserSignupRequestedListener;
+use shop\repositories\events\EntityPersisted;
+use shop\repositories\events\EntityRemoved;
+use shop\services\newsletter\MailChimp;
+use shop\services\newsletter\Newsletter;
+use shop\services\sms\LoggedSender;
+use shop\services\sms\SmsRu;
+use shop\services\sms\SmsSender;
+use shop\services\yandex\ShopInfo;
+use shop\services\yandex\YandexMarket;
+use shop\entities\user\events\UserSignUpConfirmed;
+use shop\entities\user\events\UserSignUpRequested;
 use shop\useCases\ContactService;
+use yii\base\BootstrapInterface;
+use yii\base\ErrorHandler;
+use yii\caching\Cache;
+use yii\di\Container;
+use yii\di\Instance;
 use yii\mail\MailerInterface;
+use yii\rbac\ManagerInterface;
+use yiidreamteam\upload\ImageUploadBehavior;
+use zhuravljov\yii\queue\Queue;
 
-class SetUp implements BootstrapInterface{
-    public function bootstrap($app)
+class SetUp implements BootstrapInterface
+{
+    public function bootstrap($app): void
     {
+
+
         $container = \Yii::$container;
 
-        $container->setSingleton(MailerInterface::class, function () use ($app){
+        $container->setSingleton(Client::class, function () use ($app){
+            return ClientBuilder::create()->build();
+        });
+
+        $container->setSingleton(MailerInterface::class, function () use ($app) {
             return $app->mailer;
         });
 
-        $container->setSingleton(PasswordResetService::class);
-        //MailerInterface::class по дефолту автоматически передается как параметр
+        $container->setSingleton(ErrorHandler::class, function () use ($app) {
+            return $app->errorHandler;
+        });
 
-        $container->setSingleton(ContactService::class, [],[
+        $container->setSingleton(Queue::class, function () use ($app) {
+            return $app->get('queue');
+        });
+
+        $container->setSingleton(Cache::class, function () use ($app) {
+            return $app->cache;
+        });
+
+        $container->setSingleton(ManagerInterface::class, function () use ($app) {
+            return $app->authManager;
+        });
+
+        $container->setSingleton(ContactService::class, [], [
             $app->params['adminEmail']
-            //MailerInterface::class по дефолту автоматически передается как параметр
         ]);
+
+        $container->setSingleton(Cart::class, function () use ($app) {
+            return new Cart(
+                new HybridStorage($app->get('user'), 'cart', 3600 * 24, $app->db),
+                new DynamicCost(new SimpleCost())
+            );
+        });
+
+        $container->setSingleton(YandexMarket::class, [], [
+            new ShopInfo($app->name, $app->name, $app->params['frontendHostInfo']),
+        ]);
+
+        $container->setSingleton(Newsletter::class, function () use ($app) {
+            return new MailChimp(
+                new \DrewM\MailChimp\MailChimp($app->params['mailChimpKey']),
+                $app->params['mailChimpListId']
+            );
+        });
+
+        $container->setSingleton(SmsSender::class, function () use ($app) {
+            return new LoggedSender(
+                new SmsRu($app->params['smsRuKey']),
+                \Yii::getLogger()
+            );
+        });
+
+        $container->setSingleton(EventDispatcher::class, DeferredEventDispatcher::class);
+
+        $container->setSingleton(DeferredEventDispatcher::class, function (Container $container) {
+            return new DeferredEventDispatcher(new AsyncEventDispatcher($container->get(Queue::class)));
+        });
+
+        $container->setSingleton(SimpleEventDispatcher::class, function (Container $container) {
+            return new SimpleEventDispatcher($container, [
+                UserSignUpRequested::class => [UserSignupRequestedListener::class],
+                UserSignUpConfirmed::class => [UserSignupConfirmedListener::class],
+                ProductAppearedInStock::class => [ProductAppearedInStockListener::class],
+                EntityPersisted::class => [
+                    ProductSearchPersistListener::class,
+                    CategoryPersistenceListener::class,
+                ],
+                EntityRemoved::class => [
+                    ProductSearchRemoveListener::class,
+                    CategoryPersistenceListener::class,
+                ],
+            ]);
+        });
+
+        $container->setSingleton(AsyncEventJobHandler::class, [], [
+            Instance::of(SimpleEventDispatcher::class)
+        ]);
+
+        /*
+        $container->setSingleton(Filesystem::class, function () use ($app) {
+            return new Filesystem(new Ftp($app->params['ftp']));
+        });
+
+        $container->set(ImageUploadBehavior::class, FlySystemImageUploadBehavior::class);
+        */
     }
 }

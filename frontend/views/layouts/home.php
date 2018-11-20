@@ -26,9 +26,9 @@ use frontend\widgets\shop\FeaturedProductsWidget;
         </div>
         <h3>Featured</h3>
 
-<!--        --><?php //= FeaturedProductsWidget::widget([
-//            'limit' => 4,
-//        ]) ?>
+        <?= FeaturedProductsWidget::widget([
+            'limit' => 4,
+        ]) ?>
 
         <h3>Last Posts</h3>
 

@@ -6,6 +6,7 @@ use yii\base\BootstrapInterface;
 use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
 
+
 class SetUp implements BootstrapInterface
 {
     public function bootstrap($app): void
@@ -21,5 +22,6 @@ class SetUp implements BootstrapInterface
                 ],
             ], $args));
         });
+
     }
 }

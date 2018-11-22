@@ -2,8 +2,8 @@
 
 namespace frontend\urls;
 
-use shop\entities\Shop\Category;
-use shop\readModels\Shop\CategoryReadRepository;
+use shop\entities\shop\Category;
+use shop\readModels\shop\CategoryReadRepository;
 use yii\base\InvalidParamException;
 use yii\base\Object;
 use yii\caching\Cache;

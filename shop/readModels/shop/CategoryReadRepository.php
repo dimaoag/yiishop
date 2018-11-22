@@ -41,7 +41,7 @@ class CategoryReadRepository
 
     public function getTreeWithSubsOf(Category $category = null): array
     {
-        $query = Category::find()->andWhere(['>', 'depth', 0])->orderBy('lft');
+        $query = Category::find()->andWhere(['>', 'depth', 0])->orderBy('lft'); //without root category
 
         if ($category) {
             $criteria = ['or', ['depth' => 1]];

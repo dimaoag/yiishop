@@ -19,7 +19,7 @@ foreach ($category->parents as $parent) {
 }
 $this->params['breadcrumbs'][] = $category->name;
 
-$this->params['active_category'] = $category;
+$this->params['active_category'] = $category;  //put category in View
 ?>
 
 <h1><?= Html::encode($category->getHeadingTile()) ?></h1>

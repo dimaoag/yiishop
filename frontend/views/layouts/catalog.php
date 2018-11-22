@@ -11,7 +11,7 @@ use frontend\widgets\shop\CategoriesWidget;
 <div class="row">
     <aside id="column-left" class="col-sm-3 hidden-xs">
         <?= CategoriesWidget::widget([
-            'active' => $this->params['active_category'] ?? null
+            'active' => $this->params['active_category'] ?? null, // if (!isset($this->params['active_category'])) return null;
         ]) ?>
     </aside>
     <div id="content" class="col-sm-9">

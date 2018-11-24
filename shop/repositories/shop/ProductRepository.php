@@ -11,7 +11,7 @@ use shop\repositories\NotFoundException;
 class ProductRepository
 {
 //    private $dispatcher;
-
+//
 //    public function __construct(EventDispatcher $dispatcher)
 //    {
 //        $this->dispatcher = $dispatcher;

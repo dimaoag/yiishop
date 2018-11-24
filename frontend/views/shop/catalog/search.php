@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\DataProviderInterface */
-/* @var $searchForm \shop\forms\Shop\Search\SearchForm */
+/* @var $searchForm \shop\forms\shop\search\SearchForm */
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;

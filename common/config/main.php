@@ -13,5 +13,8 @@ return [
             'class' => 'yii\caching\MemCache',
             'useMemcached' => true,
         ],
+        'debug' => [
+            'class' => 'shop\useCases\Debug',
+        ],
     ],
 ];

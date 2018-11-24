@@ -2,7 +2,7 @@
 
 namespace shop\repositories\shop;
 
-//use shop\dispatchers\EventDispatcher;
+use shop\dispatchers\EventDispatcher;
 use shop\entities\shop\Category;
 use shop\repositories\events\EntityPersisted;
 use shop\repositories\events\EntityRemoved;

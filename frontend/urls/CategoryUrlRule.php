@@ -31,6 +31,7 @@ class CategoryUrlRule extends Object implements UrlRuleInterface
         if (preg_match('#^' . $this->prefix . '/(.*[a-z])$#is', $request->pathInfo, $matches)) {
             $path = $matches['1'];
 
+
             $result = $this->cache->getOrSet(['category_route', 'path' => $path], function () use ($path) {
                 if (!$category = $this->repository->findBySlug($this->getPathSlug($path))) {
                     return ['id' => null, 'path' => null];

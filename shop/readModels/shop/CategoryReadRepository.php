@@ -6,6 +6,7 @@ use Elasticsearch\Client;
 use shop\entities\shop\Category;
 use shop\readModels\shop\views\CategoryView;
 use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 class CategoryReadRepository
 {
@@ -57,7 +58,7 @@ class CategoryReadRepository
             'index' => 'shop',
             'type' => 'products',
             'body' => [
-                'size' => 0,
+                'size' => 0, // no view _source info
                 'aggs' => [
                     'group_by_category' => [
                         'terms' => [

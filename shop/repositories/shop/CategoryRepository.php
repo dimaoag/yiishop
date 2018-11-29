@@ -7,6 +7,7 @@ use shop\entities\shop\Category;
 use shop\repositories\events\EntityPersisted;
 use shop\repositories\events\EntityRemoved;
 use shop\repositories\NotFoundException;
+use yii\helpers\ArrayHelper;
 
 class CategoryRepository
 {
@@ -40,4 +41,11 @@ class CategoryRepository
         }
 //        $this->dispatcher->dispatch(new EntityRemoved($category));
     }
+
+
+    public function getParentById(Category $category)
+    {
+        return ArrayHelper::getColumn($category->parents, 'id');
+    }
+
 }

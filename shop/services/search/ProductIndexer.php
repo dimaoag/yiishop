@@ -6,30 +6,91 @@ use Elasticsearch\Client;
 use shop\entities\shop\Category;
 use shop\entities\shop\product\Product;
 use shop\entities\shop\product\Value;
+use shop\repositories\shop\CategoryRepository;
 use yii\helpers\ArrayHelper;
 
 class ProductIndexer
 {
     private $client;
+    private $categoryRepository;
 
-    public function __construct(Client $client)
+    public function __construct(Client $client, CategoryRepository $categoryRepository)
     {
         $this->client = $client;
+        $this->categoryRepository = $categoryRepository;
     }
 
     public function clear(): void
     {
-        $this->client->deleteByQuery([
-            'index' => 'shop',
-            'type' => 'products',
-            'body' => [
-                'query' => [
-                    'match_all' => new \stdClass(),
-                ],
-            ],
+        $this->client->indices()->delete([
+            'index' => 'shop'
         ]);
 
+//        $this->client->deleteByQuery([
+//            'index' => 'shop',
+//            'type' => 'products',
+//            'body' => [
+//                'query' => [
+//                    'match_all' => new \stdClass(),
+//                ],
+//            ],
+//        ]);
+    }
 
+    public function createMapping() :void
+    {
+        $this->client->indices()->create([
+            'index' => 'shop',
+            'body' => [
+                'mappings' => [
+                    'products' => [
+                        '_source' => [
+                            'enabled' => true,
+                        ],
+                        'properties' => [
+                            'id' => [
+                                'type' => 'integer',
+                            ],
+                            'name' => [
+                                'type' => 'text',
+                            ],
+                            'description' => [
+                                'type' => 'text',
+                            ],
+                            'price' => [
+                                'type' => 'integer',
+                            ],
+                            'rating' => [
+                                'type' => 'float',
+                            ],
+                            'brand' => [
+                                'type' => 'integer',
+                            ],
+                            'categories' => [
+                                'type' => 'integer',
+                            ],
+                            'tags' => [
+                                'type' => 'integer',
+                            ],
+                            'values' => [
+                                'type' => 'nested',
+                                'properties' => [
+                                    'characteristic' => [
+                                        'type' => 'integer',
+                                    ],
+                                    'value_string' => [
+                                        'type' => 'keyword',
+                                    ],
+                                    'value_int' => [
+                                        'type' => 'integer',
+                                    ],
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
     }
 
     public function index(Product $product): void
@@ -47,11 +108,11 @@ class ProductIndexer
                 'brand' => $product->brand_id,
                 'categories' => ArrayHelper::merge(
                     [$product->category->id],
-                    ArrayHelper::getColumn($product->category->parents, 'id')
-//                    ArrayHelper::getColumn($product->categoryAssignments, 'category_id')
-//                    array_reduce(array_map(function (Category $category) {
+                    ArrayHelper::getColumn($product->category->parents, 'id'),
+                    ArrayHelper::getColumn($product->categoryAssignments, 'category_id')
+//                    array_reduce(array_map(function (Category $category){
 //                        return ArrayHelper::getColumn($category->parents, 'id');
-//                    }, $product->categoryAssignments),'array_merge')
+//                    }, $product->categoryAssignments), 'array_merge', [])
                 ),
                 'tags' => ArrayHelper::getColumn($product->tagAssignments, 'tag_id'),
                 'values' => array_map(function (Value $value) {

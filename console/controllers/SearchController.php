@@ -36,6 +36,8 @@ class SearchController extends Controller
 
         $this->stdout('Indexing of products' . PHP_EOL);
 
+        $this->indexer->createMapping();
+
         foreach ($query->each() as $product) {
             /** @var Product $product */
             $this->stdout('Product #' . $product->id . PHP_EOL);

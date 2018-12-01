@@ -74,7 +74,7 @@ class CartItem
 
     public function plus($quantity)
     {
-        return new static($this->product, $this->modificationId, $this->quantity + $quantity);
+        return new static($this->product, $this->modificationId, $this->quantity + $quantity); //return self
     }
 
     public function changeQuantity($quantity)

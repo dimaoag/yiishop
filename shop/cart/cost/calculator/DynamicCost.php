@@ -4,7 +4,7 @@ namespace shop\cart\cost\calculator;
 
 use shop\cart\cost\Cost;
 use shop\cart\cost\Discount as CartDiscount;
-use shop\entities\Shop\Discount as DiscountEntity;
+use shop\entities\shop\Discount as DiscountEntity;
 
 class DynamicCost implements CalculatorInterface
 {

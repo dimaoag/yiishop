@@ -2,8 +2,8 @@
 
 namespace shop\forms\shop;
 
-use shop\entities\Shop\Product\Modification;
-use shop\entities\Shop\Product\Product;
+use shop\entities\shop\product\Modification;
+use shop\entities\shop\product\Product;
 use shop\helpers\PriceHelper;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;

@@ -7,6 +7,9 @@ use yii\filters\AccessControl;
 
 class DefaultController extends Controller {
 
+    public $layout = 'cabinet';
+
+
     public function behaviors()
     {
         return [
@@ -24,6 +27,7 @@ class DefaultController extends Controller {
 
 
     public function actionIndex(){
+
         return $this->render('index');
     }
 

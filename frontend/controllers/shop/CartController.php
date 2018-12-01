@@ -2,9 +2,9 @@
 
 namespace frontend\controllers\shop;
 
-use shop\forms\Shop\AddToCartForm;
-use shop\readModels\Shop\ProductReadRepository;
-use shop\useCases\Shop\CartService;
+use shop\forms\shop\AddToCartForm;
+use shop\readModels\shop\ProductReadRepository;
+use shop\useCases\shop\CartService;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;

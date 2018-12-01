@@ -4,10 +4,12 @@ namespace shop\services\search;
 
 use Elasticsearch\Client;
 use shop\entities\shop\Category;
+use shop\entities\shop\product\CategoryAssignment;
 use shop\entities\shop\product\Product;
 use shop\entities\shop\product\Value;
 use shop\repositories\shop\CategoryRepository;
 use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 class ProductIndexer
 {
@@ -109,10 +111,10 @@ class ProductIndexer
                 'categories' => ArrayHelper::merge(
                     [$product->category->id],
                     ArrayHelper::getColumn($product->category->parents, 'id'),
-                    ArrayHelper::getColumn($product->categoryAssignments, 'category_id')
-//                    array_reduce(array_map(function (Category $category){
-//                        return ArrayHelper::getColumn($category->parents, 'id');
-//                    }, $product->categoryAssignments), 'array_merge', [])
+                    ArrayHelper::getColumn($product->categoryAssignments, 'category_id'),
+                    array_reduce(array_map(function (Category $category){
+                        return ArrayHelper::getColumn($category->parents, 'id');
+                    }, $product->categories), 'array_merge', [])
                 ),
                 'tags' => ArrayHelper::getColumn($product->tagAssignments, 'tag_id'),
                 'values' => array_map(function (Value $value) {

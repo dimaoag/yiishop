@@ -16,6 +16,7 @@ use yii\data\Sort;
 use yii\db\ActiveQuery;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 class ProductReadRepository
 {
@@ -148,6 +149,7 @@ class ProductReadRepository
                     'bool' => [
                         'must' => array_merge(
                             array_filter([
+//                                !empty($form->category) ? ['range' => ['categories' => ['gte' => 5, 'lte' => 6]]] : false,
                                 !empty($form->category) ? ['term' => ['categories' => $form->category]] : false,
                                 !empty($form->brand) ? ['term' => ['brand' => $form->brand]] : false,
                                 !empty($form->text) ? ['multi_match' => [

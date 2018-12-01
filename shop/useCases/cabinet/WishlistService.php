@@ -2,7 +2,7 @@
 
 namespace shop\useCases\cabinet;
 
-use shop\repositories\Shop\ProductRepository;
+use shop\repositories\shop\ProductRepository;
 use shop\repositories\UserRepository;
 
 class WishlistService
@@ -18,7 +18,7 @@ class WishlistService
 
     public function add($userId, $productId): void
     {
-        $user = $this->users->get($userId);
+        $user = $this->users->getUserById($userId);
         $product = $this->products->get($productId);
         $user->addToWishList($product->id);
         $this->users->save($user);
@@ -26,7 +26,7 @@ class WishlistService
 
     public function remove($userId, $productId): void
     {
-        $user = $this->users->get($userId);
+        $user = $this->users->getUserById($userId);
         $product = $this->products->get($productId);
         $user->removeFromWishList($product->id);
         $this->users->save($user);

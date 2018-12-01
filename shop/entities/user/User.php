@@ -3,6 +3,7 @@ namespace shop\entities\user;
 
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use Yii;
+use shop\entities\EventTrait;
 use yii\base\NotSupportedException;
 use yii\base\Theme;
 use yii\behaviors\TimestampBehavior;
@@ -25,10 +26,13 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $password write-only password
  *
- *  * @property Network[] $networks
+ * @property Network[] $networks
+ * @property WishlistItem[] $wishlistItems
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    use EventTrait;
+
     const STATUS_WAIT = 0;
     const STATUS_ACTIVE = 10;
 
@@ -125,6 +129,38 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->status === self::STATUS_WAIT;
     }
 
+    public function addToWishList($productId): void
+    {
+        $items = $this->wishlistItems;
+        foreach ($items as $item) {
+            if ($item->isForProduct($productId)) {
+                throw new \DomainException('Item is already added.');
+            }
+        }
+        $items[] = WishlistItem::create($productId);
+        $this->wishlistItems = $items;
+    }
+
+    public function removeFromWishList($productId): void
+    {
+        $items = $this->wishlistItems;
+        foreach ($items as $i => $item) {
+            if ($item->isForProduct($productId)) {
+                unset($items[$i]);
+                $this->wishlistItems = $items;
+                return;
+            }
+        }
+        throw new \DomainException('Item is not found.');
+    }
+
+
+
+    public function getWishlistItems(): ActiveQuery
+    {
+        return $this->hasMany(WishlistItem::class, ['user_id' => 'id']);
+    }
+
 
     public function getNetworks() :ActiveQuery
     {
@@ -143,7 +179,7 @@ class User extends ActiveRecord implements IdentityInterface
             TimestampBehavior::className(),
             [
                 'class' => SaveRelationsBehavior::className(),
-                'relations' => ['networks'],
+                'relations' => ['networks', 'wishlistItems'],
             ],
         ];
     }

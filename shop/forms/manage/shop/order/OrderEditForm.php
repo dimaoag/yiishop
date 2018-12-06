@@ -1,21 +1,23 @@
 <?php
 
-namespace shop\forms\shop\Order;
+namespace shop\forms\manage\shop\order;
 
+use shop\entities\shop\order\Order;
 use shop\forms\CompositeForm;
 
 /**
  * @property DeliveryForm $delivery
  * @property CustomerForm $customer
  */
-class OrderForm extends CompositeForm
+class OrderEditForm extends CompositeForm
 {
     public $note;
 
-    public function __construct(int $weight, array $config = [])
+    public function __construct(Order $order, array $config = [])
     {
-        $this->delivery = new DeliveryForm($weight);
-        $this->customer = new CustomerForm();
+        $this->note = $order->note;
+        $this->delivery = new DeliveryForm($order);
+        $this->customer = new CustomerForm($order);
         parent::__construct($config);
     }
 

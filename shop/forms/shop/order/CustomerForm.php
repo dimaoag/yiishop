@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\forms\shop\Order;
+namespace shop\forms\shop\order;
 
 use yii\base\Model;
 

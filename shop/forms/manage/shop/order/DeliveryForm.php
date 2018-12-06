@@ -1,8 +1,9 @@
 <?php
 
-namespace shop\forms\shop\Order;
+namespace shop\forms\manage\shop\order;
 
-use shop\entities\Shop\DeliveryMethod;
+use shop\entities\shop\DeliveryMethod;
+use shop\entities\shop\order\Order;
 use shop\helpers\PriceHelper;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -13,11 +14,13 @@ class DeliveryForm extends Model
     public $index;
     public $address;
 
-    private $_weight;
+    private $_order;
 
-    public function __construct(int $weight, array $config = [])
+    public function __construct(Order $order, array $config = [])
     {
-        $this->_weight = $weight;
+        $this->method = $order->delivery_method_id;
+        $this->index = $order->deliveryData->index;
+        $this->address = $order->deliveryData->address;
         parent::__construct($config);
     }
 
@@ -33,7 +36,7 @@ class DeliveryForm extends Model
 
     public function deliveryMethodsList(): array
     {
-        $methods = DeliveryMethod::find()->availableForWeight($this->_weight)->orderBy('sort')->all();
+        $methods = DeliveryMethod::find()->orderBy('sort')->all();
 
         return ArrayHelper::map($methods, 'id', function (DeliveryMethod $method) {
             return $method->name . ' (' . PriceHelper::format($method->cost) . ')';

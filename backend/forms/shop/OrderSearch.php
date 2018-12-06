@@ -2,7 +2,7 @@
 
 namespace backend\forms\shop;
 
-use shop\entities\Shop\Order\Order;
+use shop\entities\shop\order\Order;
 use shop\helpers\OrderHelper;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

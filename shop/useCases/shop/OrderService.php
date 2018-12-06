@@ -43,7 +43,7 @@ class OrderService
 
     public function checkout($userId, OrderForm $form): Order
     {
-        $user = $this->users->get($userId);
+        $user = $this->users->getUserById($userId);
 
         $products = [];
 

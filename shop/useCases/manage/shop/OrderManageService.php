@@ -2,11 +2,11 @@
 
 namespace shop\useCases\manage\shop;
 
-use shop\entities\Shop\Order\CustomerData;
-use shop\entities\Shop\Order\DeliveryData;
-use shop\forms\manage\Shop\Order\OrderEditForm;
-use shop\repositories\Shop\DeliveryMethodRepository;
-use shop\repositories\Shop\OrderRepository;
+use shop\entities\shop\order\CustomerData;
+use shop\entities\shop\order\DeliveryData;
+use shop\forms\manage\shop\order\OrderEditForm;
+use shop\repositories\shop\DeliveryMethodRepository;
+use shop\repositories\shop\OrderRepository;
 
 class OrderManageService
 {

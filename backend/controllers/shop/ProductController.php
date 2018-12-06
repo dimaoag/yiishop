@@ -58,10 +58,6 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * @param integer $id
-     * @return mixed
-     */
     public function actionView($id)
     {
         $product = $this->findModel($id);

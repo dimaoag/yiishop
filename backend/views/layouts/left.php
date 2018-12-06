@@ -45,7 +45,7 @@
                             ['label' => 'Categories', 'icon' => 'star-o', 'url' => ['/shop/category/index'], 'active' => $this->context->id == 'shop/category'],
                             ['label' => 'Characteristics', 'icon' => 'star-o', 'url' => ['/shop/characteristic/index'], 'active' => $this->context->id == 'shop/characteristic'],
                             ['label' => 'Products', 'icon' => 'star-o', 'url' => ['/shop/product/index'], 'active' => $this->context->id == 'shop/product'],
-
+                            ['label' => 'Delivery Methods', 'icon' => 'file-o', 'url' => ['/shop/delivery/index'], 'active' => $this->context->id == 'shop/delivery'],
                         ],
                     ],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],

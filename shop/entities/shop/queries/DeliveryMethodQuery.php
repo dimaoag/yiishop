@@ -9,7 +9,7 @@ class DeliveryMethodQuery extends ActiveQuery
     public function availableForWeight($weight)
     {
         return $this->andWhere(['and',
-            ['or', ['min_weight' => null], ['<=', 'min_weight', $weight]],
+            ['or', ['min_weight' => null], ['<=', 'min_weight', $weight]],  //if weight not null -> ['<=', 'min_weight', $weight]
             ['or', ['max_weight' => null], ['>=', 'max_weight', $weight]],
         ]);
     }

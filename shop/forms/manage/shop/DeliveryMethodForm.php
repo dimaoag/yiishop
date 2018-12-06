@@ -15,7 +15,7 @@ class DeliveryMethodForm extends Model
 
     public function __construct(DeliveryMethod $method = null, $config = [])
     {
-        if ($method) {
+        if ($method) {  //if edit
             $this->name = $method->name;
             $this->cost = $method->cost;
             $this->minWeight = $method->min_weight;

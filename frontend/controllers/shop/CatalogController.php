@@ -9,6 +9,7 @@ use shop\readModels\shop\BrandReadRepository;
 use shop\readModels\shop\CategoryReadRepository;
 use shop\readModels\shop\ProductReadRepository;
 use shop\readModels\shop\TagReadRepository;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -120,6 +121,8 @@ class CatalogController extends Controller
 
         $dataProvider = $this->products->search($form);
 
+        VarDumper::dump($dataProvider, 100, true);
+        die();
         return $this->render('search', [
             'dataProvider' => $dataProvider,
             'searchForm' => $form,

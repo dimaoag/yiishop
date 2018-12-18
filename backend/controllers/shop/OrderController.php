@@ -74,10 +74,9 @@ class OrderController extends Controller
         return Yii::$app->response->sendFile($file, 'report.xlsx');
     }
 
-    /**
-     * @param integer $id
-     * @return mixed
-     */
+
+
+
     public function actionView($id)
     {
         return $this->render('view', [
@@ -85,10 +84,8 @@ class OrderController extends Controller
         ]);
     }
 
-    /**
-     * @param integer $id
-     * @return mixed
-     */
+
+
     public function actionUpdate($id)
     {
         $order = $this->findModel($id);

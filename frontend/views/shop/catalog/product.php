@@ -79,7 +79,9 @@ MagnificPopupAsset::register($this);
                 </table>
             </div>
             <div class="tab-pane" id="tab-review">
-                <div id="review"></div>
+                <div id="review">
+
+                </div>
                 <h2>Write a review</h2>
 
                 <?php if (Yii::$app->user->isGuest): ?>

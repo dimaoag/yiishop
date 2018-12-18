@@ -12,6 +12,7 @@ use shop\forms\manage\shop\product\PhotosForm;
 use shop\forms\manage\shop\product\PriceForm;
 use shop\forms\manage\shop\product\ProductCreateForm;
 use shop\forms\manage\shop\product\ProductEditForm;
+use shop\forms\shop\ReviewForm;
 use shop\repositories\shop\BrandRepository;
 use shop\repositories\shop\CategoryRepository;
 use shop\repositories\shop\ProductRepository;
@@ -256,5 +257,18 @@ class ProductManageService
     {
         $product = $this->products->get($id);
         $this->products->remove($product);
+    }
+
+
+
+    public function addReview($userId, $productId, ReviewForm $form): void
+    {
+        $product = $this->products->get($productId);
+        $product->addReview(
+            $userId,
+            $form->vote,
+            $form->text
+        );
+        $this->products->save($product);
     }
 }

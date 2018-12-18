@@ -9,6 +9,8 @@ use shop\readModels\shop\BrandReadRepository;
 use shop\readModels\shop\CategoryReadRepository;
 use shop\readModels\shop\ProductReadRepository;
 use shop\readModels\shop\TagReadRepository;
+use shop\useCases\manage\shop\ProductManageService;
+use Yii;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -18,6 +20,7 @@ class CatalogController extends Controller
     public $layout = 'catalog';
 
     private $products;
+    private $productManageService;
     private $categories;
     private $brands;
     private $tags;
@@ -26,6 +29,7 @@ class CatalogController extends Controller
         $id,
         $module,
         ProductReadRepository $products,
+        ProductManageService $productManageService,
         CategoryReadRepository $categories,
         BrandReadRepository $brands,
         TagReadRepository $tags,
@@ -34,6 +38,7 @@ class CatalogController extends Controller
     {
         parent::__construct($id, $module, $config);
         $this->products = $products;
+        $this->productManageService = $productManageService;
         $this->categories = $categories;
         $this->brands = $brands;
         $this->tags = $tags;
@@ -121,8 +126,6 @@ class CatalogController extends Controller
 
         $dataProvider = $this->products->search($form);
 
-        VarDumper::dump($dataProvider, 100, true);
-        die();
         return $this->render('search', [
             'dataProvider' => $dataProvider,
             'searchForm' => $form,
@@ -144,6 +147,15 @@ class CatalogController extends Controller
 
         $cartForm = new AddToCartForm($product);
         $reviewForm = new ReviewForm();
+        if ($reviewForm->load(Yii::$app->request->post()) && $reviewForm->validate()) {
+            try {
+                $this->productManageService->addReview(Yii::$app->user->id, $product->id, $reviewForm);
+                return $this->redirect(Yii::$app->request->referrer ?: ['index']);
+            } catch (\DomainException $e) {
+                Yii::$app->errorHandler->logException($e);
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
 
         return $this->render('product', [
             'product' => $product,

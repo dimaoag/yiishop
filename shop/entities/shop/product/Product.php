@@ -492,6 +492,9 @@ class Product extends ActiveRecord implements AggregateRoot
         $total = 0;
 
         foreach ($reviews as $review) {
+            /**
+             * @var Review $review
+             */
             if ($review->isActive()) {
                 $amount++;
                 $total += $review->getRating();

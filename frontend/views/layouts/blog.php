@@ -3,7 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use frontend\widgets\Blog\CategoriesWidget;
+use frontend\widgets\blog\CategoriesWidget;
 
 ?>
 <?php $this->beginContent('@frontend/views/layouts/main.php') ?>

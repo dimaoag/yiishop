@@ -3,7 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use frontend\widgets\Blog\LastPostsWidget;
+use frontend\widgets\blog\LastPostsWidget;
 use frontend\widgets\shop\FeaturedProductsWidget;
 
 \frontend\assets\OwlCarouselAsset::register($this);

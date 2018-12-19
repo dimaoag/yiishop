@@ -11,6 +11,7 @@ use yii\db\ActiveRecord;
  * @property int $vote
  * @property string $text
  * @property bool $active
+ * @property int $product_id
  */
 class Review extends ActiveRecord
 {

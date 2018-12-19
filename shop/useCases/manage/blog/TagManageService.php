@@ -2,9 +2,9 @@
 
 namespace shop\useCases\manage\blog;
 
-use shop\entities\Blog\Tag;
-use shop\forms\manage\Blog\TagForm;
-use shop\repositories\Blog\TagRepository;
+use shop\entities\blog\Tag;
+use shop\forms\manage\blog\TagForm;
+use shop\repositories\blog\TagRepository;
 
 class TagManageService
 {

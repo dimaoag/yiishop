@@ -2,7 +2,7 @@
 
 namespace shop\helpers;
 
-use shop\entities\Shop\Product\Product;
+use shop\entities\shop\product\Product;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 

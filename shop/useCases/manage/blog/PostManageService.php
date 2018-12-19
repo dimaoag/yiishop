@@ -3,12 +3,12 @@
 namespace shop\useCases\manage\blog;
 
 use shop\entities\Meta;
-use shop\entities\Blog\Post\Post;
-use shop\entities\Blog\Tag;
-use shop\forms\manage\Blog\Post\PostForm;
-use shop\repositories\Blog\CategoryRepository;
-use shop\repositories\Blog\PostRepository;
-use shop\repositories\Blog\TagRepository;
+use shop\entities\blog\post\Post;
+use shop\entities\blog\Tag;
+use shop\forms\manage\blog\post\PostForm;
+use shop\repositories\blog\CategoryRepository;
+use shop\repositories\blog\PostRepository;
+use shop\repositories\blog\TagRepository;
 use shop\services\TransactionManager;
 
 class PostManageService

@@ -3,10 +3,10 @@
 namespace shop\useCases\manage\blog;
 
 use shop\entities\Meta;
-use shop\entities\Blog\Category;
-use shop\forms\manage\Blog\CategoryForm;
-use shop\repositories\Blog\CategoryRepository;
-use shop\repositories\Blog\PostRepository;
+use shop\entities\blog\Category;
+use shop\forms\manage\blog\CategoryForm;
+use shop\repositories\blog\CategoryRepository;
+use shop\repositories\blog\PostRepository;
 
 class CategoryManageService
 {

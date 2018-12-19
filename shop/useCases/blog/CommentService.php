@@ -2,9 +2,9 @@
 
 namespace shop\useCases\blog;
 
-use shop\entities\Blog\Post\Comment;
-use shop\forms\Blog\CommentForm;
-use shop\repositories\Blog\PostRepository;
+use shop\entities\blog\post\Comment;
+use shop\forms\blog\CommentForm;
+use shop\repositories\blog\PostRepository;
 use shop\repositories\UserRepository;
 
 class CommentService
@@ -21,7 +21,7 @@ class CommentService
     public function create($postId, $userId, CommentForm $form): Comment
     {
         $post = $this->posts->get($postId);
-        $user = $this->users->get($userId);
+        $user = $this->users->getUserById($userId);
 
         $comment = $post->addComment($user->id, $form->parentId, $form->text);
 

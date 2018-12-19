@@ -2,7 +2,7 @@
 
 namespace shop\listeners\shop\category;
 
-use shop\entities\Blog\Category;
+use shop\entities\blog\Category;
 use shop\repositories\events\EntityPersisted;
 use yii\caching\Cache;
 use yii\caching\TagDependency;

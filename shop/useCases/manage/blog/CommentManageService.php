@@ -2,8 +2,8 @@
 
 namespace shop\useCases\manage\blog;
 
-use shop\forms\manage\Blog\Post\CommentEditForm;
-use shop\repositories\Blog\PostRepository;
+use shop\forms\manage\blog\post\CommentEditForm;
+use shop\repositories\blog\PostRepository;
 
 class CommentManageService
 {

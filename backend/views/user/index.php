@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use backend\widgets\grid\RoleColumn;
 use yii\grid\GridView;
 use yii\grid\ActionColumn;
 use shop\entities\user\User;
@@ -49,6 +50,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'username',
                     'email:email',
+                    [
+                        'attribute' => 'role',
+                        'class' => RoleColumn::class,
+                        'filter' => $searchModel->rolesList(),
+                    ],
                     [
                         'attribute' => 'status',
                         'filter' => UserHelper::statusList(),

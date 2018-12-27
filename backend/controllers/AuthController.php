@@ -38,18 +38,24 @@ class AuthController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
 
         $this->layout = 'main-login';
-
         $form = new LoginForm();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
                 $user = $this->authService->auth($form);
                 Yii::$app->user->login(new Identity($user), $form->rememberMe ? 3600 * 24 * 30 : 0);
-                return $this->goBack();
+                if (Yii::$app->user->can('admin'))
+                {
+                    return $this->goBack();
+                }
+                else
+                {
+                    Yii::$app->user->logout();
+                  Yii::$app->getSession()->setFlash('error', 'You are not authorized to login Admin\ penal.<br /> Please use valid Username & Password.<br />Please contact Administrator for details.');
+
+                    return $this->redirect(['auth/login']);
+                }
             } catch (\DomainException $e) {
                 Yii::$app->errorHandler->logException($e);
                 Yii::$app->session->setFlash('error', $e->getMessage());

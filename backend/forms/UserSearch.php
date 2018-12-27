@@ -2,9 +2,11 @@
 
 namespace backend\forms;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use shop\entities\user\User;
+use yii\helpers\ArrayHelper;
 
 /**
  * UserSearch represents the model behind the search form of `shop\entities\user\User`.
@@ -17,6 +19,7 @@ class UserSearch extends Model
     public $date_to;
     public $email;
     public $username;
+    public $role;
 
 
 
@@ -24,7 +27,7 @@ class UserSearch extends Model
     {
         return [
             [['id', 'status'], 'integer'],
-            [['username', 'email'], 'safe'],
+            [['username', 'email', 'role'], 'safe'],
             [['date_from', 'date_to'], 'date', 'format' => 'php:Y-m-d'],
         ];
     }
@@ -33,7 +36,7 @@ class UserSearch extends Model
 
     public function search($params)
     {
-        $query = User::find();
+        $query = User::find()->alias('u');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -45,11 +48,16 @@ class UserSearch extends Model
             $query->where('0=1');
             return $dataProvider;
         }
-
         $query->andFilterWhere([
-            'id' => $this->id,
-            'status' => $this->status,
+            'u.id' => $this->id,
+            'u.status' => $this->status,
         ]);
+
+        if (!empty($this->role)) {
+            $query->innerJoin('{{%auth_assignments}} a', 'a.user_id = u.id');
+            $query->andWhere(['a.item_name' => $this->role]);
+        }
+
 
         $query->andFilterWhere(['like', 'username', $this->username])
             ->andFilterWhere(['like', 'email', $this->email])
@@ -57,5 +65,10 @@ class UserSearch extends Model
             ->andFilterWhere(['<=', 'created_at', $this->date_to ? strtotime($this->date_to . ' 23:59:59') : null]);
 
         return $dataProvider;
+    }
+
+    public function rolesList(): array
+    {
+        return ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'description');
     }
 }

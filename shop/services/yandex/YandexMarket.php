@@ -2,10 +2,10 @@
 
 namespace shop\services\yandex;
 
-use shop\entities\Shop\DeliveryMethod;
-use shop\readModels\Shop\CategoryReadRepository;
-use shop\readModels\Shop\DeliveryMethodReadRepository;
-use shop\readModels\Shop\ProductReadRepository;
+use shop\entities\shop\DeliveryMethod;
+use shop\readModels\shop\CategoryReadRepository;
+use shop\readModels\shop\DeliveryMethodReadRepository;
+use shop\readModels\shop\ProductReadRepository;
 use yii\helpers\Html;
 
 class YandexMarket

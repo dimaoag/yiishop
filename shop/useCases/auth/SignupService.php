@@ -63,6 +63,7 @@ class SignupService{
         $user = $this->users->getUserByConfirmToken($token);
         $user->confirmSignup();
         $this->users->save($user);
+//        $this->newsletter->subscribe($user->email);
     }
 
 

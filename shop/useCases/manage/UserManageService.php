@@ -64,6 +64,7 @@ class UserManageService
     {
         $user = $this->repository->getUserById($id);
         $this->repository->remove($user);
+//        $user->newsletter->unsubscribe($user->email);
     }
 
 

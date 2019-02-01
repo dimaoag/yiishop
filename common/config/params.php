@@ -9,4 +9,6 @@ return [
     'rememberMeDuration' => 3600 * 24,
     'staticHostInfo' => 'http://static.yiishop.com',
     'staticPath' => dirname(__DIR__, 2) . '/static',
+    'mailChimpKey' => 'XXXX',
+    'mailChimpListId' => 'XXXX',
 ];

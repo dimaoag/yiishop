@@ -49,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'datetime',
                     ],
                     'username',
+                    'phone',
                     'email:email',
                     [
                         'attribute' => 'role',

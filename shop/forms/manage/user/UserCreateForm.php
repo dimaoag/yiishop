@@ -9,6 +9,7 @@ use yii\helpers\ArrayHelper;
 class UserCreateForm extends Model
 {
     public $username;
+    public $phone;
     public $email;
     public $password;
     public $role;
@@ -18,8 +19,8 @@ class UserCreateForm extends Model
         return [
             [['username', 'email', 'role'], 'required'],
             ['email', 'email'],
-            [['username', 'email'], 'string', 'max' => 255],
-            [['username', 'email'], 'unique', 'targetClass' => User::class],
+            [['username', 'email', 'phone'], 'string', 'max' => 255],
+            [['username', 'email', 'phone'], 'unique', 'targetClass' => User::class],
             ['password', 'string', 'min' => 6],
         ];
     }

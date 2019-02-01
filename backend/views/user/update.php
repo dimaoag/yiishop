@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = 'Update';
     <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model,'username')->textInput(['maxLength' => true]); ?>
+        <?= $form->field($model,'phone')->textInput(['maxLength' => true]); ?>
         <?= $form->field($model,'email')->textInput(['maxLength' => true]); ?>
         <?= $form->field($model, 'role')->dropDownList($model->rolesList()) ?>
 

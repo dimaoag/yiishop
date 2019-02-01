@@ -9,6 +9,7 @@ use yii\helpers\ArrayHelper;
 class UserEditForm extends Model
 {
     public $username;
+    public $phone;
     public $email;
     public $role;
 
@@ -17,6 +18,7 @@ class UserEditForm extends Model
     public function __construct(User $user, array $config = [])
     {
         $this->username = $user->username;
+        $this->phone = $user->phone;
         $this->email = $user->email;
         $roles = Yii::$app->authManager->getRolesByUser($user->id);
         $this->role = $roles ? reset($roles)->name : null;
@@ -29,8 +31,8 @@ class UserEditForm extends Model
         return [
             [['username', 'email', 'role'], 'required'],
             ['email', 'email'],
-            ['email', 'string', 'max' => 255],
-            [['username', 'email'], 'unique', 'targetClass' => User::class, 'filter' => ['<>', 'id', $this->_user->id]],
+            [['email', 'phone'], 'string', 'max' => 255],
+            [['username', 'email', 'phone'], 'unique', 'targetClass' => User::class, 'filter' => ['<>', 'id', $this->_user->id]],
         ];
     }
 

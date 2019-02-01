@@ -25,6 +25,7 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $phone
  *
  * @property Network[] $networks
  * @property WishlistItem[] $wishlistItems
@@ -36,10 +37,11 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_WAIT = 0;
     const STATUS_ACTIVE = 10;
 
-    public static function create(string $username, string $email, string $password):self
+    public static function create(string $username, string $phone, string $email, string $password):self
     {
         $user = new User();
         $user->username = $username;
+        $user->phone = $phone;
         $user->email = $email;
         $user->setPassword(!empty($password) ? $password : Yii::$app->security->generateRandomString());
         $user->created_at = time();
@@ -49,12 +51,47 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
 
-    public function edit(string $username, string $email):void
+    public function edit(string $username, string $phone, string $email):void
     {
         $this->username = $username;
+        $this->phone = $phone;
         $this->email = $email;
         $this->updated_at = time();
     }
+
+//    public function requestPhoneChange($phone): void
+//    {
+//        if (!empty($this->new_phone_confirm_expire) && $this->new_phone_confirm_expire > time()){
+//            throw \DomainException('Token is already sent.');
+//        }
+//
+//        $this->new_phone = $phone;
+//        $this->new_phone_confirm_token = random_int(10000, 99999);
+//        $this->new_phone_confirm_expire = time() + 180;
+//        $this->new_phone_confirm_limit = 3;
+//    }
+//
+//    public function confirmPhoneChange($token): bool
+//    {
+//        if (empty($this->new_phone_confirm_token)){
+//            throw \DomainException('Token empty');
+//        }
+//
+//        if ($token === $this->new_phone_confirm_token){
+//            $this->phone = $this->new_phone;
+//            $this->new_phone = null;
+//            $this->new_phone_confirm_token = null;
+//            return true;
+//        }
+//
+//        if ($this->new_phone_confirm_limit <= 0){
+//            throw \DomainException('Try again request phone ...');
+//        }
+//
+//        $this->new_phone_confirm_limit--;
+//        return false;
+//    }
+
 
     public static function signup(string $username, string $email, string $password):self
     {
@@ -155,17 +192,26 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
 
-
     public function getWishlistItems(): ActiveQuery
     {
         return $this->hasMany(WishlistItem::class, ['user_id' => 'id']);
     }
 
-
     public function getNetworks() :ActiveQuery
     {
         return $this->hasMany(Network::className(), ['user_id' => 'id']);
     }
+
+//    public function getBuyerProfile() :ActiveQuery
+//    {
+//        return $this->hasOne(Buyer::class, ['user_id' => 'id']);
+//    }
+//
+//    public function getDealerProfile() :ActiveQuery
+//    {
+//        return $this->hasOne(Dealer::class, ['user_id' => 'id']);
+//    }
+
 
     public static function tableName()
     {

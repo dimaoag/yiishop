@@ -1,15 +1,25 @@
 <?php
 namespace shop\repositories;
 
+use shop\dispatchers\EventDispatcher;
 use shop\entities\user\User;
+use shop\dispatchers\SimpleEventDispatcher;
 
 class UserRepository
 {
+    private $dispatcher;
+
+    public function __construct(SimpleEventDispatcher $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
+
     public function save(User $user): void
     {
         if (!$user->save()){
             throw new \RuntimeException('Saving error.');
         }
+        $this->dispatcher->dispatchAll($user->releaseEvents());
     }
 
 
@@ -18,6 +28,7 @@ class UserRepository
         if (!$user->delete()) {
             throw new \RuntimeException('Removing error.');
         }
+        $this->dispatcher->dispatchAll($user->releaseEvents());
     }
 
     public function findByNetworkIdentity($network, $identity): ?User

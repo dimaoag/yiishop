@@ -2,10 +2,12 @@
 namespace shop\entities\user;
 
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
+use shop\entities\AggregateRoot;
+use shop\entities\user\events\UserSignUpConfirmed;
+use shop\entities\user\events\UserSignUpRequested;
 use Yii;
 use shop\entities\EventTrait;
 use yii\base\NotSupportedException;
-use yii\base\Theme;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -30,7 +32,7 @@ use yii\web\IdentityInterface;
  * @property Network[] $networks
  * @property WishlistItem[] $wishlistItems
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends ActiveRecord implements IdentityInterface, AggregateRoot
 {
     use EventTrait;
 
@@ -103,6 +105,7 @@ class User extends ActiveRecord implements IdentityInterface
         $user->status = self::STATUS_WAIT;
         $user->generateEmailConfirmToken();
         $user->generateAuthKey();
+        $user->recordEvent(new UserSignUpRequested($user));
         return $user;
     }
 
@@ -114,6 +117,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
         $this->status = self::STATUS_ACTIVE;
         $this->removeEmailConfirmToken();
+//        $this->recordEvent(new UserSignUpConfirmed($this));
     }
 
     public static function signupByNetwork($network, $identity) :self

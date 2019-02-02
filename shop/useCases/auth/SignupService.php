@@ -16,8 +16,14 @@ class SignupService{
     private $mailer;
     private $roles;
     private $transaction;
+    private $dispatcher;
 
-    public function __construct(UserRepository $users, MailerInterface $mailer, RoleManager $roles,  TransactionManager $transaction)
+    public function __construct(
+        UserRepository $users,
+        MailerInterface $mailer,
+        RoleManager $roles,
+        TransactionManager $transaction
+    )
     {
         $this->mailer = $mailer;
         $this->users = $users;
@@ -26,7 +32,7 @@ class SignupService{
     }
 
 
-    public function signup(SignupForm $form)
+    public function signup(SignupForm $form): void
     {
         $user = User::signup(
             $form->username,
@@ -37,25 +43,11 @@ class SignupService{
             $this->users->save($user);
             $this->roles->assign($user->id, Rbac::ROLE_USER);
         });
-
         $this->users->save($user);
-        $sent = $this
-            ->mailer
-            ->compose(
-                ['html' => 'auth/signup/emailConfirmToken-html', 'text' => 'auth/signup/emailConfirmToken-text'],
-                ['user' => $user]
-            )
-            ->setTo($form->email)
-            ->setSubject('Signup confirm for ' . 'My App')
-            ->send();
-        if (!$sent){
-            throw new \RuntimeException('Email sending error.');
-        }
-
     }
 
 
-    public function confirm($token)
+    public function confirm($token): void
     {
         if (empty($token)){
             throw new \DomainException('Empty confirm token');
@@ -63,7 +55,6 @@ class SignupService{
         $user = $this->users->getUserByConfirmToken($token);
         $user->confirmSignup();
         $this->users->save($user);
-//        $this->newsletter->subscribe($user->email);
     }
 
 

@@ -107,8 +107,15 @@ class SetUp implements BootstrapInterface
 
         $container->setSingleton(EventDispatcher::class, DeferredEventDispatcher::class);
 
+//        $container->setSingleton(DeferredEventDispatcher::class, function (Container $container) {
+//            return new DeferredEventDispatcher(new AsyncEventDispatcher($container->get(Queue::class)));
+//        });
+
         $container->setSingleton(DeferredEventDispatcher::class, function (Container $container) {
-            return new DeferredEventDispatcher(new AsyncEventDispatcher($container->get(Queue::class)));
+            return new DeferredEventDispatcher(new SimpleEventDispatcher($container,[
+                UserSignUpRequested::class => [UserSignupRequestedListener::class],
+                UserSignUpConfirmed::class => [UserSignupConfirmedListener::class],
+            ]));
         });
 
         $container->setSingleton(SimpleEventDispatcher::class, function (Container $container) {

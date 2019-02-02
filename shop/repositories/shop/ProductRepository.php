@@ -2,7 +2,7 @@
 
 namespace shop\repositories\shop;
 
-use shop\dispatchers\EventDispatcher;
+use shop\dispatchers\SimpleEventDispatcher;
 use shop\entities\shop\product\Product;
 use shop\repositories\events\EntityPersisted;
 use shop\repositories\events\EntityRemoved;
@@ -10,12 +10,12 @@ use shop\repositories\NotFoundException;
 
 class ProductRepository
 {
-//    private $dispatcher;
-//
-//    public function __construct(EventDispatcher $dispatcher)
-//    {
-//        $this->dispatcher = $dispatcher;
-//    }
+    private $dispatcher;
+
+    public function __construct(SimpleEventDispatcher $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
 
     public function get($id): Product
     {
@@ -40,7 +40,7 @@ class ProductRepository
         if (!$product->save()) {
             throw new \RuntimeException('Saving error.');
         }
-//        $this->dispatcher->dispatchAll($product->releaseEvents());
+        $this->dispatcher->dispatchAll($product->releaseEvents());
 //        $this->dispatcher->dispatch(new EntityPersisted($product));
     }
 
@@ -49,7 +49,7 @@ class ProductRepository
         if (!$product->delete()) {
             throw new \RuntimeException('Removing error.');
         }
-//        $this->dispatcher->dispatchAll($product->releaseEvents());
+        $this->dispatcher->dispatchAll($product->releaseEvents());
 //        $this->dispatcher->dispatch(new EntityRemoved($product));
     }
 }

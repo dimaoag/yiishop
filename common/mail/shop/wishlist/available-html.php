@@ -2,8 +2,8 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $user \shop\entities\user\User */
-/* @var $product \shop\entities\shop\product\Product */
+/* @var $user \shop\entities\User\User */
+/* @var $product \shop\entities\Shop\Product\Product */
 
 $link = Yii::$app->get('frontendUrlManager')->createAbsoluteUrl(['shop/catalog/product', 'id' => $product->id]);
 ?>

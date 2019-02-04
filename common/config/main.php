@@ -7,6 +7,7 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'bootstrap' => [
         'common\bootstrap\SetUp',
+        'queue',
     ],
     'components' => [
         'cache' => [
@@ -20,8 +21,9 @@ return [
             'assignmentTable' => '{{%auth_assignments}}',
             'ruleTable' => '{{%auth_rules}}',
         ],
-        'debug' => [
-            'class' => 'shop\useCases\Debug',
+        'queue' => [
+            'class' => 'zhuravljov\yii\queue\redis\Queue',
+            'as log' => 'zhuravljov\yii\queue\LogBehavior',
         ],
     ],
 ];

@@ -1,14 +1,13 @@
 <?php
 namespace shop\repositories;
 
-use shop\dispatchers\EventDispatcher;
+
 use shop\entities\user\User;
 use shop\dispatchers\SimpleEventDispatcher;
 
 class UserRepository
 {
     private $dispatcher;
-
     public function __construct(SimpleEventDispatcher $dispatcher)
     {
         $this->dispatcher = $dispatcher;

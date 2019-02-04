@@ -2,7 +2,7 @@
 
 namespace shop\repositories\shop;
 
-use shop\dispatchers\SimpleEventDispatcher;
+use shop\dispatchers\EventDispatcher;
 use shop\entities\shop\product\Product;
 use shop\repositories\events\EntityPersisted;
 use shop\repositories\events\EntityRemoved;
@@ -12,7 +12,7 @@ class ProductRepository
 {
     private $dispatcher;
 
-    public function __construct(SimpleEventDispatcher $dispatcher)
+    public function __construct(EventDispatcher $dispatcher)
     {
         $this->dispatcher = $dispatcher;
     }
@@ -41,7 +41,7 @@ class ProductRepository
             throw new \RuntimeException('Saving error.');
         }
         $this->dispatcher->dispatchAll($product->releaseEvents());
-//        $this->dispatcher->dispatch(new EntityPersisted($product));
+        $this->dispatcher->dispatch(new EntityPersisted($product));
     }
 
     public function remove(Product $product): void
@@ -50,6 +50,6 @@ class ProductRepository
             throw new \RuntimeException('Removing error.');
         }
         $this->dispatcher->dispatchAll($product->releaseEvents());
-//        $this->dispatcher->dispatch(new EntityRemoved($product));
+        $this->dispatcher->dispatch(new EntityRemoved($product));
     }
 }

@@ -47,7 +47,7 @@ return [
             'cookieValidationKey' => $params['cookieValidationKey'],
         ],
         'user' => [
-            'identityClass' => 'shop\entities\user\User',
+            'identityClass' => 'common\auth\Identity',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity', 'httpOnly' => true, 'domain' => $params['cookieDomain']],
         ],

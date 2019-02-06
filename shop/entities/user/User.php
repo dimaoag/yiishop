@@ -32,7 +32,7 @@ use yii\web\IdentityInterface;
  * @property Network[] $networks
  * @property WishlistItem[] $wishlistItems
  */
-class User extends ActiveRecord implements IdentityInterface, AggregateRoot
+class User extends ActiveRecord implements AggregateRoot
 {
     use EventTrait;
 
@@ -203,7 +203,7 @@ class User extends ActiveRecord implements IdentityInterface, AggregateRoot
 
     public function getNetworks() :ActiveQuery
     {
-        return $this->hasMany(Network::className(), ['user_id' => 'id']);
+        return $this->hasMany(Network::class, ['user_id' => 'id']);
     }
 
 //    public function getBuyerProfile() :ActiveQuery
@@ -226,9 +226,9 @@ class User extends ActiveRecord implements IdentityInterface, AggregateRoot
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
             [
-                'class' => SaveRelationsBehavior::className(),
+                'class' => SaveRelationsBehavior::class,
                 'relations' => ['networks', 'wishlistItems'],
             ],
         ];
@@ -241,17 +241,6 @@ class User extends ActiveRecord implements IdentityInterface, AggregateRoot
         ];
     }
 
-
-    public static function findIdentity($id)
-    {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
-    }
-
-
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
-    }
 
 
     public static function findByUsername($username)
@@ -284,26 +273,6 @@ class User extends ActiveRecord implements IdentityInterface, AggregateRoot
         return $timestamp + $expire >= time();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->getPrimaryKey();
-    }
-
-
-    public function getAuthKey()
-    {
-        return $this->auth_key;
-    }
-
-
-    public function validateAuthKey($authKey)
-    {
-        return $this->getAuthKey() === $authKey;
-    }
-
 
     public function validatePassword($password)
     {
@@ -323,17 +292,6 @@ class User extends ActiveRecord implements IdentityInterface, AggregateRoot
     }
 
 
-    private function generatePasswordResetToken()
-    {
-        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
-    }
-
-
-    private function removePasswordResetToken()
-    {
-        $this->password_reset_token = null;
-    }
-
 
     private function generateEmailConfirmToken()
     {
@@ -344,13 +302,6 @@ class User extends ActiveRecord implements IdentityInterface, AggregateRoot
     {
         $this->email_confirm_token = null;
     }
-
-
-
-
-
-
-
 
 
 

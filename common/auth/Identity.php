@@ -21,7 +21,7 @@ class Identity implements IdentityInterface, UserCredentialsInterface
     public static function findIdentity($id)
     {
         $user = self::getRepository()->findActiveById($id);
-        return $user ? new self($user): null;
+        return $user ? new self($user) : null;
     }
 
     public static function findIdentityByAccessToken($token, $type = null)
@@ -66,7 +66,7 @@ class Identity implements IdentityInterface, UserCredentialsInterface
 
     private static function getRepository(): UserReadRepository
     {
-        return \Yii::$container->get(UserReadRepository::class);
+        return Yii::$container->get(UserReadRepository::class);
     }
 
     private static function getOauth(): Module

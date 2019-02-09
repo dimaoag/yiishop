@@ -178,6 +178,9 @@ class Product extends ActiveRecord implements AggregateRoot
         return $this->meta->title ?: $this->name;
     }
 
+
+    // characteristics
+
     public function setValue($id, $value): void
     {
         $values = $this->values;

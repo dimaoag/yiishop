@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "name": "admin",
+  "email": "dimaoag@gmail.com",
+  "date": {
+    "created": "2018-10-23T19:30:56+00:00",
+    "updated": "2019-02-01T21:19:00+00:00"
+  },
+  "status": {
+    "code": 10,
+    "name": "Active"
+  }
+}

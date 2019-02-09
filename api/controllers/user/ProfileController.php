@@ -3,7 +3,7 @@
 namespace api\controllers\user;
 
 use api\helpers\DateHelper;
-use shop\entities\User\User;
+use shop\entities\user\User;
 use shop\helpers\UserHelper;
 use yii\helpers\Url;
 use yii\rest\Controller;
@@ -23,10 +23,6 @@ class ProfileController extends Controller
      *     security={{"Bearer": {}, "OAuth2": {}}}
      * )
      */
-    public function actionIndex(): User
-    {
-        return $this->serializeUser($this->findModel());
-    }
 
     public function verbs(): array
     {
@@ -34,6 +30,13 @@ class ProfileController extends Controller
             'index' => ['get'],
         ];
     }
+
+
+    public function actionIndex()
+    {
+        return $this->serializeUser($this->findModel());
+    }
+
 
     private function findModel(): User
     {

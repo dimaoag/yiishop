@@ -1,0 +1,386 @@
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T125809.200.json
+
+###
+
+POST http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T125801.405.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T125425.200.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T125350.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T125242.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T125141.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124956.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124927.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124551.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124536.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124525.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124438.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=c26d7c0ac24d93275ade11e313e608dd1624b6bc
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124354.500.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124314.200.json
+
+###
+
+GET http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124302.404.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=75f529a9c9d925a4aad9fb00c363d7d29ceddea4
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T124220.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=75f529a9c9d925a4aad9fb00c363d7d29ceddea4
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T123716.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=75f529a9c9d925a4aad9fb00c363d7d29ceddea4
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T123702.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=75f529a9c9d925a4aad9fb00c363d7d29ceddea4
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+Authentication: Bearer
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T123640.500.json
+
+###
+
+GET http://api.yiishop.com/profile?accessToken=75f529a9c9d925a4aad9fb00c363d7d29ceddea4
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T123337.500.json
+
+###
+
+POST http://api.yiishop.com/profile?accessToken=75f529a9c9d925a4aad9fb00c363d7d29ceddea4
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T123319.500.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T122741.200.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "password", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T122713.401.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "password", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T121657.500.json
+
+###
+
+POST http://api.yiishop.com
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "password", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T121118.200.json
+
+###
+
+POST http://api.yiishop.com
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "password", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T121107.200.json
+
+###
+
+GET http://api.yiishop.com
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "password", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T121056.200.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "password", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T120846.500.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "password", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T120725.500.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type": "password", "username": "admin", "password": "123456", "client_id": "testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T120459.500.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: application/json
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type":"password", "username":"admin", "password":"123456", "client_id":"testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T120432.500.json
+
+###
+
+POST http://api.yiishop.com/oauth2/token
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json; charset=UTF-8
+
+{"grant_type":"password", "username":"admin", "password":"123456", "client_id":"testclient", "client_secret": "testpass"}
+
+<> 2019-02-09T120309.500.json
+
+###
+
+POST http://api.yiishop.com
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-02-06T090252.200.json
+
+###
+
+GET http://api.yiishop.com
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-02-06T090054.200.json
+
+###
+
+GET http://api.yiishop.com
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-02-06T085702.200.html
+
+###
+

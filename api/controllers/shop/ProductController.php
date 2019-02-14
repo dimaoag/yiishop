@@ -3,15 +3,15 @@
 namespace api\controllers\shop;
 
 use api\providers\MapDataProvider;
-use shop\entities\Shop\Category;
-use shop\entities\Shop\Product\Modification;
-use shop\entities\Shop\Product\Photo;
-use shop\entities\Shop\Product\Product;
-use shop\entities\Shop\Tag;
-use shop\readModels\Shop\CategoryReadRepository;
-use shop\readModels\Shop\TagReadRepository;
-use shop\readModels\Shop\BrandReadRepository;
-use shop\readModels\Shop\ProductReadRepository;
+use shop\entities\shop\Category;
+use shop\entities\shop\product\Modification;
+use shop\entities\shop\product\Photo;
+use shop\entities\shop\product\Product;
+use shop\entities\shop\Tag;
+use shop\readModels\shop\CategoryReadRepository;
+use shop\readModels\shop\TagReadRepository;
+use shop\readModels\shop\BrandReadRepository;
+use shop\readModels\shop\ProductReadRepository;
 use yii\data\DataProviderInterface;
 use yii\helpers\Url;
 use yii\rest\Controller;

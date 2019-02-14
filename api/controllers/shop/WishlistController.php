@@ -3,8 +3,8 @@
 namespace api\controllers\shop;
 
 use api\providers\MapDataProvider;
-use shop\entities\Shop\Product\Product;
-use shop\readModels\Shop\ProductReadRepository;
+use shop\entities\shop\Product\Product;
+use shop\readModels\shop\ProductReadRepository;
 use shop\useCases\cabinet\WishlistService;
 use Yii;
 use yii\data\DataProviderInterface;

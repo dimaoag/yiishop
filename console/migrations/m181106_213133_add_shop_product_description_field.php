@@ -17,18 +17,4 @@ class m181106_213133_add_shop_product_description_field extends Migration
         $this->dropColumn('{{%shop_products}}', 'description');
     }
 
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m181106_213133_add_shop_product_description_field cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

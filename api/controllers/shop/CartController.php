@@ -4,9 +4,9 @@ namespace api\controllers\shop;
 
 use shop\cart\CartItem;
 use shop\cart\cost\Discount;
-use shop\forms\Shop\AddToCartForm;
-use shop\readModels\Shop\ProductReadRepository;
-use shop\useCases\Shop\CartService;
+use shop\forms\shop\AddToCartForm;
+use shop\readModels\shop\ProductReadRepository;
+use shop\useCases\shop\CartService;
 use Yii;
 use yii\helpers\Url;
 use yii\rest\Controller;

@@ -5,6 +5,7 @@ namespace api\controllers\user;
 use api\helpers\DateHelper;
 use shop\entities\user\User;
 use shop\helpers\UserHelper;
+use Yii;
 use yii\helpers\Url;
 use yii\rest\Controller;
 
@@ -40,7 +41,7 @@ class ProfileController extends Controller
 
     private function findModel(): User
     {
-        return User::findOne(\Yii::$app->user->id);
+        return User::findOne(Yii::$app->user->id);
     }
 
     private function serializeUser(User $user): array

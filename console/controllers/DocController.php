@@ -9,7 +9,7 @@ class DocController extends Controller
 {
     public function actionBuild(): void
     {
-        $swagger = Yii::getAlias('@vendor/bin/swagger');
+        $swagger = Yii::getAlias('@vendor/bin/openapi');
         $source = Yii::getAlias('@api/controllers');
         $target = Yii::getAlias('@api/web/docs/swagger.json');
 

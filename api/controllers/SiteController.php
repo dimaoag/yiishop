@@ -16,6 +16,25 @@ use yii\rest\Controller;
  *         title="Shop API",
  *         description="HTTP JSON API",
  *     ),
+ *     @OA\Info(
+ *         version="1.0.0",
+ *         title="Shop API",
+ *         description="HTTP JSON API",
+ *     ),
+ *     @OA\Get(
+ *   path="/",
+ *
+ *   @OA\Response(
+ *     response=200,
+ *     description="A list with products"
+ *   ),
+ *   @OA\Response(
+ *     response="default",
+ *     description="an ""unexpected"" error"
+ *   )
+ * )
+ *     @OA\Response(response="200", description="An example resource")
+ * )
  *     @SWG\SecurityScheme(
  *         securityDefinition="OAuth2",
  *         type="oauth2",

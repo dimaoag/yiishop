@@ -55,7 +55,7 @@ MagnificPopupAsset::register($this);
             <li><a href="#tab-review" data-toggle="tab">Reviews (0)</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="tab-description"><p>
+            <div class="tab-pane active" id="tab-description">
                 <?= Yii::$app->formatter->asHtml($product->description, [
                     'Attr.AllowedRel' => array('nofollow'),
                     'HTML.SafeObject' => true,

@@ -33,3 +33,15 @@ phpunit.phar
 
 # vagrant runtime
 /.vagrant
+
+common/runtime/
+
+/node_modules
+/public/build
+/public/storage
+/storage/*.key
+/.idea
+/.vscode
+npm-debug.log
+yarn-error.log
+.env
